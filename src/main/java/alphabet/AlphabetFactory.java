@@ -3,7 +3,7 @@ package alphabet;
 public class AlphabetFactory {
 
 	public final static String extendedAlphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890 !#%&/()=?<>-_^*{}[]\n\"\\;:.,";
-	public final static String alphanumericAlphabet = "abcdefghijklmnopqrstuvwxyzÂ‰ˆABCDEFGHIJKLMNOPQRSTUVWXYZ≈ƒ÷1234567890";
+	public final static String alphanumericAlphabet = "abcdefghijklmnopqrstuvwxyz√•√§√∂ABCDEFGHIJKLMNOPQRSTUVWXYZ√Ö√Ñ√ñ1234567890";
 
 	public static Alphabet of(String characters) {
 		return getAlphabet(characters);
