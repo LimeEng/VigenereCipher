@@ -1,8 +1,10 @@
 package core;
 
 import java.util.stream.IntStream;
+
 import alphabet.Alphabet;
 import alphabet.AlphabetFactory;
+import repl.CommandLine;
 
 public class Main {
 	
@@ -26,6 +28,9 @@ public class Main {
 
 		System.out.println((text.equals(decrypted)) ? "The decryption was successful!"
 				: "The decrypted text does not match the plain text");
+		
+		CommandLine line = new CommandLine();
+		line.run();
 	}
 
 	private static String merge(String a, String b) {
