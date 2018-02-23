@@ -16,6 +16,10 @@ repositories {
     jcenter()
 }
 
+compileJava { 
+  options.encoding = "UTF-8" 
+}
+
 dependencies {
     // The production code uses Guava
     compile 'com.google.guava:guava:20.0'
