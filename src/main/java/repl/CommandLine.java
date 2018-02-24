@@ -86,75 +86,11 @@ public class CommandLine {
 
 			Predicate<StatusCode> quitCondition = code -> code == StatusCode.EXIT;
 
-			// Stream.generate(input)
-			// .map(expressionHandler)
-			// .noneMatch(quitCommand);
-
 			Stream.generate(input)
 					.map(mainFunction)
 					.map(resultHandler)
 					.noneMatch(quitCondition);
 
 		}
-
-		// try (Scanner scanner = new Scanner(System.in)) {
-		//
-		// Supplier<String> input = () -> {
-		// System.out.print("> ");
-		// return scanner.nextLine();
-		// };
-		//
-		// Function<>
-		//
-		// BiFunction<Command, String, StatusCode> commandFunction = (command,
-		// input) -> {
-		// if (input.equals("!exit")) {
-		// return StatusCode.EXIT;
-		// }
-		//
-		// return StatusCode.OK;
-		// };
-		//
-		// Predicate<String> quitCommand = (command) ->
-		// quit.equalsIgnoreCase(command.trim());
-		//
-		// Stream.generate(input)
-		// .map(commandFunction)
-		// .noneMatch(quitCommand);
-		// }
-
 	}
-
-	// public void run() {
-	// Scanner scan = new Scanner(System.in);
-	// String command = "";
-	// VigenereCipher cipher = new VigenereCipher(AlphabetFactory.extended());
-	// System.out.println("=====");
-	// while (true) {
-	// System.out.print("> ");
-	// command = scan.nextLine();
-	// if (command.toLowerCase()
-	// .equals("exit")) {
-	// break;
-	// }
-	// String[] commands = command.split(" ");
-	// if (commands.length == 3 && (commands[0].toLowerCase()
-	// .equals("encrypt")
-	// || commands[0].toLowerCase()
-	// .equals("decrypt"))) {
-	//
-	// if (commands[0].toLowerCase()
-	// .equals("encrypt")) {
-	// System.out.println("=> " + cipher.encrypt(commands[2], commands[1]));
-	// } else {
-	// System.out.println("=> " + cipher.decrypt(commands[2], commands[1]));
-	// }
-	// } else {
-	// System.out.println("Invalid syntax: [encrypt|decrypt] [key] [text]");
-	// continue;
-	// }
-	// }
-	// scan.close();
-	// }
-
 }

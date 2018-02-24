@@ -1,4 +1,5 @@
+install: gradle wrapper --gradle-version 3.3
 language: java
 jdk: oraclejdk8
 git:
-    submodules: false[A[A[B[B
+    submodules: false
