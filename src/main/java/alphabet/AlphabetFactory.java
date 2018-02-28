@@ -1,30 +1,33 @@
 package alphabet;
 
-public class AlphabetFactory {
+import java.util.Collection;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-	public final static String extendedAlphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890 !#%&/()=?<>-_^*{}[]\n\"\\;:.,";
-	public final static String alphanumericAlphabet = "abcdefghijklmnopqrstuvwxyzåäöABCDEFGHIJKLMNOPQRSTUVWXYZÅÄÖ1234567890";
+public class AlphabetFactory {
 
 	public static Alphabet of(String characters) {
 		return getAlphabet(characters);
 	}
 
-	public static Alphabet extended() {
-		return getAlphabet(extendedAlphabet);
-	}
-
-	public static Alphabet alphanumeric() {
-		return getAlphabet(alphanumericAlphabet);
+	public static Alphabet of(Collection<Integer> codePoints) {
+		return getAlphabet(codePoints);
 	}
 	
-	private static Alphabet getAlphabet(String text) {
-		return new DefinedAlphabet(distinct(text));
+	private static Alphabet getAlphabet(Stream<Integer> codePoints) {
+		// return getAlphabet(distinct(text).collect(Collectors.toList()));
+		return new DefinedAlphabet(distinct(codePoints).collect(Collectors.toList()));
 	}
 
-	private static String distinct(String text) {
-		StringBuilder sb = text.codePoints()
-				.distinct()
-				.collect(StringBuilder::new, StringBuilder::appendCodePoint, StringBuilder::append);
-		return sb.toString();
+	private static Alphabet getAlphabet(String text) {
+		return getAlphabet(text.codePoints().boxed());
+	}
+
+	private static Alphabet getAlphabet(Collection<Integer> codePoints) {
+		return getAlphabet(codePoints.stream());
+	}
+
+	private static Stream<Integer> distinct(Stream<Integer> codePoints) {
+		return codePoints.distinct();
 	}
 }

@@ -5,16 +5,17 @@ import java.util.stream.IntStream;
 import alphabet.Alphabet;
 import alphabet.AlphabetFactory;
 import repl.CommandLine;
+import util.PredefinedAlphabetStrings;
 
 public class Main {
-	
+
 	public static void main(String[] args) {
 		// String text = "This is my very secret text!";
 		String text = "😂😂😂😂😂😘😘😘😘😘❤️❤️❤️❤️❤️";
 		// String text = "😀😇🤠😪👾💀👨🤜🏻☂️";
 		String key = "Password123";
 
-		Alphabet alphabet = AlphabetFactory.of(merge(text, AlphabetFactory.extendedAlphabet));
+		Alphabet alphabet = AlphabetFactory.of(merge(text, PredefinedAlphabetStrings.extendedAlphabet));
 
 		VigenereCipher cipher = new VigenereCipher(alphabet);
 
@@ -28,7 +29,7 @@ public class Main {
 
 		System.out.println((text.equals(decrypted)) ? "The decryption was successful!"
 				: "The decrypted text does not match the plain text");
-		
+
 		CommandLine line = new CommandLine();
 		line.run();
 	}
