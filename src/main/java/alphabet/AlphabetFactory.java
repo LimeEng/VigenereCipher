@@ -15,7 +15,6 @@ public class AlphabetFactory {
 	}
 	
 	private static Alphabet getAlphabet(Stream<Integer> codePoints) {
-		// return getAlphabet(distinct(text).collect(Collectors.toList()));
 		return new DefinedAlphabet(distinct(codePoints).collect(Collectors.toList()));
 	}
 
