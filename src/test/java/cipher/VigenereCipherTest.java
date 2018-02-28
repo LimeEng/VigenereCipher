@@ -1,6 +1,7 @@
 package cipher;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertTrue;
 
 import java.util.UUID;
@@ -44,6 +45,13 @@ public class VigenereCipherTest {
 		String key = "password";
 		String expected = "This is a rather long sentence which should be properly encrypted and later decrypted";
 		assertEquals("The decryption does not match the expected result", expected, cipher.decrypt(text, key));
+	}
+	
+	@Test
+	public void testThatEncryptionDoesSomething() {
+		String text  = "This is a random sentence";
+		String key = "Random password";
+		assertNotEquals("The encryption does nothing", text, cipher.encrypt(text, key));
 	}
 
 	@Test
