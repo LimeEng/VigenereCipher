@@ -17,10 +17,11 @@ import core.VigenereCipher;
 import repl.commands.Command;
 import repl.commands.status.StatusCode;
 import repl.commands.status.StatusMessage;
+import util.PredefinedAlphabetStrings;
 
 public class CommandLine {
 
-	private VigenereCipher cipher = new VigenereCipher(AlphabetFactory.extended());
+	private VigenereCipher cipher = new VigenereCipher(AlphabetFactory.of(PredefinedAlphabetStrings.extendedAlphabet));
 
 	public void run() {
 		try (Scanner scan = new Scanner(System.in)) {
