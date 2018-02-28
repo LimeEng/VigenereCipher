@@ -8,9 +8,13 @@ public class DefinedAlphabet implements Alphabet {
 	private final List<Integer> codePoints;
 
 	public DefinedAlphabet(String characters) {
-		this.codePoints = characters.codePoints()
+		this(characters.codePoints()
 				.boxed()
-				.collect(Collectors.toList());
+				.collect(Collectors.toList()));
+	}
+
+	public DefinedAlphabet(List<Integer> codePoints) {
+		this.codePoints = codePoints;
 	}
 
 	@Override
