@@ -17,6 +17,10 @@ public class VigenereCipher {
 	public String decrypt(String text, String key) {
 		return cipher(text, key, CipherOperation.DECRYPT);
 	}
+	
+	public Integer cipher(Integer text, Integer key, CipherOperation operation) {
+		return null;
+	}
 
 	private String cipher(String text, String key, CipherOperation operation) {
 		StringBuilder sb = new StringBuilder();
@@ -58,7 +62,7 @@ public class VigenereCipher {
 		return modifiedIndex;
 	}
 
-	private enum CipherOperation {
+	public enum CipherOperation {
 		ENCRYPT,
 		DECRYPT;
 	}
