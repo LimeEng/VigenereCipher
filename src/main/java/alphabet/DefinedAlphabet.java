@@ -1,30 +1,35 @@
 package alphabet;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class DefinedAlphabet implements Alphabet {
 
-	private final String alphabet;
+	private final List<Integer> codePoints;
 
 	public DefinedAlphabet(String characters) {
-		this.alphabet = characters;
+		this.codePoints = characters.codePoints()
+				.boxed()
+				.collect(Collectors.toList());
 	}
 
 	@Override
 	public int size() {
-		return alphabet.codePointCount(0, alphabet.length());
+		return codePoints.size();
 	}
 
 	@Override
 	public int codePointAt(int index) throws IndexOutOfBoundsException {
-		return alphabet.codePointAt(index);
+		return codePoints.get(index);
 	}
 
 	@Override
 	public int indexOf(int codePoint) {
-		return alphabet.indexOf(codePoint);
+		return codePoints.indexOf(codePoint);
 	}
 
 	@Override
 	public boolean containsCodePoint(int codePoint) {
-		return alphabet.contains(new String(Character.toChars(codePoint)));
+		return codePoints.contains(codePoint);
 	}
 }
