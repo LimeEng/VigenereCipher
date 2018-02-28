@@ -23,7 +23,6 @@ public class CommandLine {
 	private VigenereCipher cipher = new VigenereCipher(AlphabetFactory.extended());
 
 	public void run() {
-
 		try (Scanner scan = new Scanner(System.in)) {
 			Supplier<String> input = () -> {
 				System.out.print("> ");
@@ -90,7 +89,6 @@ public class CommandLine {
 					.map(mainFunction)
 					.map(resultHandler)
 					.noneMatch(quitCondition);
-
 		}
 	}
 }
