@@ -71,7 +71,7 @@ public class VigenereCipherTest {
 		CodePointSupplier supplier = new CodePointSupplier(key);
 		String actual = toString(text.codePoints()
 				.boxed()
-				.map(e -> cipher.cipher(e, supplier.get(), CipherOperation.ENCRYPT)));
+				.map(e -> cipher.cipher(e, supplier.get(), CipherOperation.DECRYPT)));
 
 		String expected = "This is a rather long sentence which should be properly encrypted and later decrypted";
 		assertEquals("The decryption does not match the expected result", expected, actual);

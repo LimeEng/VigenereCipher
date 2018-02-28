@@ -17,9 +17,15 @@ public class VigenereCipher {
 	public String decrypt(String text, String key) {
 		return cipher(text, key, CipherOperation.DECRYPT);
 	}
-	
+
 	public Integer cipher(Integer text, Integer key, CipherOperation operation) {
-		return null;
+		if (alphabet.containsAll(text, key)) {
+			int indexOfChar = alphabet.indexOf(text);
+			int indexOfKey = alphabet.indexOf(key);
+			int modifiedIndex = getModifiedIndex(indexOfChar, indexOfKey, operation);
+			return alphabet.codePointAt(modifiedIndex);
+		}
+		return text;
 	}
 
 	private String cipher(String text, String key, CipherOperation operation) {
@@ -33,14 +39,7 @@ public class VigenereCipher {
 			int chr = text.codePointAt(textOffset);
 			int keyChar = key.codePointAt(keyOffset % keyLength);
 
-			if (alphabet.containsAll(chr, keyChar)) {
-				int indexOfChar = alphabet.indexOf(chr);
-				int indexOfKey = alphabet.indexOf(keyChar);
-				int modifiedIndex = getModifiedIndex(indexOfChar, indexOfKey, operation);
-				sb.appendCodePoint(alphabet.codePointAt(modifiedIndex));
-			} else {
-				sb.appendCodePoint(chr);
-			}
+			sb.appendCodePoint(cipher(chr, keyChar, operation));
 
 			textOffset += Character.charCount(chr);
 			keyOffset += Character.charCount(keyChar);
