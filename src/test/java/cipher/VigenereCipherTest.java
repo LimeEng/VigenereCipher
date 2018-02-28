@@ -47,7 +47,7 @@ public class VigenereCipherTest {
 	}
 
 	@Test
-	public void testEncryptionAnDecryption() {
+	public void testEncryptionAndDecryption() {
 		for (int i = 0; i < 1000; i++) {
 			String text = longRandomString();
 			String key = longRandomString();
