@@ -15,6 +15,8 @@ import org.junit.Test;
 
 import alphabet.AlphabetFactory;
 import core.VigenereCipher;
+import core.VigenereCipher.CipherOperation;
+import test_util.CodePointSupplier;
 
 public class VigenereCipherTest {
 
@@ -46,10 +48,38 @@ public class VigenereCipherTest {
 		String expected = "This is a rather long sentence which should be properly encrypted and later decrypted";
 		assertEquals("The decryption does not match the expected result", expected, cipher.decrypt(text, key));
 	}
-	
+
+	@Test
+	public void testBasicSingleEncryption() {
+		String text = "This is a rather long sentence which should be properly encrypted and later decrypted";
+		String key = "password";
+
+		CodePointSupplier supplier = new CodePointSupplier(key);
+		String actual = toString(text.codePoints()
+				.boxed()
+				.map(e -> cipher.cipher(e, supplier.get(), CipherOperation.ENCRYPT)));
+
+		String expected = "ihAK wJ p JsPvvu lGFC JhCtwFys zwiuz GyrJlv xs sGoHwNzP tnuJUDKhs sFz CdIeJ zstuNpLwz";
+		assertEquals("The encryption does not match the expected result", expected, actual);
+	}
+
+	@Test
+	public void testBasicSingleDecryption() {
+		String text = "ihAK wJ p JsPvvu lGFC JhCtwFys zwiuz GyrJlv xs sGoHwNzP tnuJUDKhs sFz CdIeJ zstuNpLwz";
+		String key = "password";
+
+		CodePointSupplier supplier = new CodePointSupplier(key);
+		String actual = toString(text.codePoints()
+				.boxed()
+				.map(e -> cipher.cipher(e, supplier.get(), CipherOperation.DECRYPT)));
+
+		String expected = "This is a rather long sentence which should be properly encrypted and later decrypted";
+		assertEquals("The decryption does not match the expected result", expected, actual);
+	}
+
 	@Test
 	public void testThatEncryptionDoesSomething() {
-		String text  = "This is a random sentence";
+		String text = "This is a random sentence";
 		String key = "Random password";
 		assertNotEquals("The encryption does nothing", text, cipher.encrypt(text, key));
 	}
@@ -63,6 +93,11 @@ public class VigenereCipherTest {
 			String decrypted = cipher.decrypt(encrypted, key);
 			assertTrue("Text were not preserved during encryption and back", text.equals(decrypted));
 		}
+	}
+
+	private String toString(Stream<Integer> stream) {
+		return stream.collect(StringBuilder::new, StringBuilder::appendCodePoint, StringBuilder::append)
+				.toString();
 	}
 
 	private String uuidString() {
