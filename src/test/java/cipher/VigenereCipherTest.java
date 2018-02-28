@@ -83,6 +83,13 @@ public class VigenereCipherTest {
 		String key = "Random password";
 		assertNotEquals("The encryption does nothing", text, cipher.encrypt(text, key));
 	}
+	
+	@Test
+	public void testThatDecryptionDoesSomething() {
+		String text = "This is a random sentence";
+		String key = "Random password";
+		assertNotEquals("The encryption does nothing", text, cipher.decrypt(text, key));
+	}
 
 	@Test
 	public void testEncryptionAndDecryption() {
