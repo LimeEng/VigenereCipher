@@ -44,8 +44,8 @@ jacocoTestReport {
     afterEvaluate {
         classDirectories = files(classDirectories.files.collect {
             fileTree(dir: it,
-                    exclude: ['core.Main.java',
-                              'util.PredefinedAlphabetStrings.java'])
+                    exclude: ['**/*Main*.*',
+                              '**/*PredefinedAlphabetStrings*.*'])
         })
     }
 }
