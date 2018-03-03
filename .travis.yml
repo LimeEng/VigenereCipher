@@ -3,3 +3,5 @@ language: java
 jdk: oraclejdk8
 git:
     submodules: false
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
