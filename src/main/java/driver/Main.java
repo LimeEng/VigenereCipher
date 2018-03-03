@@ -1,9 +1,10 @@
-package core;
+package driver;
 
 import java.util.stream.IntStream;
 
 import alphabet.Alphabet;
 import alphabet.AlphabetFactory;
+import ciphers.VigenereCipher;
 import util.PredefinedAlphabetStrings;
 
 public class Main {
