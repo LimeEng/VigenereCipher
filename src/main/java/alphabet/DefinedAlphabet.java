@@ -1,5 +1,6 @@
 package alphabet;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -14,7 +15,7 @@ public class DefinedAlphabet implements Alphabet {
 	}
 
 	public DefinedAlphabet(List<Integer> codePoints) {
-		this.codePoints = codePoints;
+		this.codePoints = new ArrayList<>(codePoints);
 	}
 
 	@Override
