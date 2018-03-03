@@ -18,7 +18,7 @@ public class VigenereCipher {
 		return cipher(text, key, CipherOperation.DECRYPT);
 	}
 
-	public Integer cipher(Integer text, Integer key, CipherOperation operation) {
+	public int cipher(int text, int key, CipherOperation operation) {
 		if (alphabet.containsAll(text, key)) {
 			int indexOfChar = alphabet.indexOf(text);
 			int indexOfKey = alphabet.indexOf(key);
