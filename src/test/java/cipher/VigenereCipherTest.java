@@ -14,8 +14,8 @@ import org.junit.Before;
 import org.junit.Test;
 
 import alphabet.AlphabetFactory;
-import core.VigenereCipher;
-import core.VigenereCipher.CipherOperation;
+import ciphers.VigenereCipher;
+import ciphers.VigenereCipher.CipherOperation;
 import test_util.CodePointSupplier;
 
 public class VigenereCipherTest {

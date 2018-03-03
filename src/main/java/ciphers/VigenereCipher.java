@@ -1,4 +1,4 @@
-package core;
+package ciphers;
 
 import alphabet.Alphabet;
 
