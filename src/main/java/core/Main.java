@@ -23,7 +23,7 @@ public class Main {
 		String decrypted = cipher.decrypt(encrypted, key);
 
 		System.out.println("Plaintext: [" + text + "]");
-		System.out.println("Key: [" + key + "]");
+		System.out.println("Key:       [" + key + "]");
 		System.out.println("Encrypted: [" + encrypted + "]");
 		System.out.println("Decrypted: [" + decrypted + "]");
 
