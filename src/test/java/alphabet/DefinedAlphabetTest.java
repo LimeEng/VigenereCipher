@@ -5,12 +5,41 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 
 public class DefinedAlphabetTest {
 
 	private static final String randomAlphabet = "😀😇🤠😪👾💀👨🤜🏻☂️😂😂😂😂😂😘😘😘😘😘❤️❤️❤️❤️❤️abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+	private Alphabet alphabet;
+
+	@Before
+	public void setup() {
+		this.alphabet = AlphabetFactory.of(randomAlphabet);
+	}
+
+	@After
+	public void tearDown() {
+		this.alphabet = null;
+	}
+
+	@Test
+	public void testConstructorString() {
+		Alphabet alphabet = new DefinedAlphabet("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ");
+		assertEquals("The size of the alphabet does not match the expected size", 52, alphabet.size());
+	}
+
+	@Test
+	public void testConstructorCollection() {
+		List<Integer> values = IntStream.range(0, 100)
+				.boxed()
+				.collect(Collectors.toList());
+		Alphabet alphabet = new DefinedAlphabet(values);
+		assertEquals("The size of the alphabet does not match the expected size", values.size(), alphabet.size());
+	}
 
 	@Test
 	public void testSize() {
@@ -20,7 +49,6 @@ public class DefinedAlphabetTest {
 
 	@Test
 	public void testContainsCodePoint() {
-		Alphabet alphabet = AlphabetFactory.of(randomAlphabet);
 		int[] codePoints = randomAlphabet.codePoints()
 				.toArray();
 		for (int codePoint : codePoints) {
@@ -30,7 +58,6 @@ public class DefinedAlphabetTest {
 
 	@Test
 	public void testIndexOfAndCodePointAt() {
-		Alphabet alphabet = AlphabetFactory.of(randomAlphabet);
 		for (int i = 0; i < alphabet.size(); i++) {
 			assertTrue("Inconsistency at index #" + i, alphabet.indexOf(alphabet.codePointAt(i)) == i);
 		}
@@ -38,7 +65,6 @@ public class DefinedAlphabetTest {
 
 	@Test
 	public void testContainsAllCollection() {
-		Alphabet alphabet = AlphabetFactory.of(randomAlphabet);
 		List<Integer> codePoints = randomAlphabet.codePoints()
 				.boxed()
 				.limit(alphabet.size())
@@ -48,7 +74,6 @@ public class DefinedAlphabetTest {
 
 	@Test
 	public void testContainsAllArray() {
-		Alphabet alphabet = AlphabetFactory.of(randomAlphabet);
 		Integer[] codePoints = randomAlphabet.codePoints()
 				.boxed()
 				.limit(alphabet.size())
