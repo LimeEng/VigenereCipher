@@ -4,7 +4,7 @@ import alphabet.Alphabet;
 
 public class VigenereCipher {
 
-	private Alphabet alphabet;
+	private final Alphabet alphabet;
 
 	public VigenereCipher(Alphabet alphabet) {
 		this.alphabet = alphabet;
