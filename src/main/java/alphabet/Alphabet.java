@@ -5,13 +5,13 @@ import java.util.Collection;
 
 public interface Alphabet {
 
-	public int size();
+	int size();
 
-	public int codePointAt(int index) throws IndexOutOfBoundsException;
+	int codePointAt(int index) throws IndexOutOfBoundsException;
 
-	public int indexOf(int codePoint);
+	int indexOf(int codePoint);
 
-	public boolean containsCodePoint(int codePoint);
+	boolean containsCodePoint(int codePoint);
 
 	default boolean containsAll(Collection<Integer> codePoints) {
 		return codePoints.stream()

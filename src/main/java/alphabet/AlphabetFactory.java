@@ -4,7 +4,7 @@ import java.util.Collection;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class AlphabetFactory {
+public final class AlphabetFactory {
 
 	// To prevent instantiation
 	private AlphabetFactory() {}

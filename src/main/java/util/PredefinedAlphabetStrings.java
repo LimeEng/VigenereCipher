@@ -1,6 +1,6 @@
 package util;
 
-public class PredefinedAlphabetStrings {
+public final class PredefinedAlphabetStrings {
 
 	private PredefinedAlphabetStrings() {};
 
